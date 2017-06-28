@@ -5,4 +5,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - ansible-role-mysql-backup
+    - mage-mysql-backup

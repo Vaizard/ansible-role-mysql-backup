@@ -21,7 +21,7 @@ mysqlbackup_crontab_script_files_owner      : root
 mysqlbackup_crontab_script_files_group      : root
 mysqlbackup_crontab_script_files_permission : "0700"
 
-mysqlbackup_credentials_file : "{{ mysqlbackup_crontab_script_dir }}/my-backup.cnf"
+mysqlbackup_credentials_file : "/root/.my.cnf"
 
 mysqlbackup_mysqldump_secure_repo : "https://github.com/cytopia/mysqldump-secure.git"
 
@@ -52,7 +52,6 @@ mysqlbackup_mysqldump_mysql_opts       :
   - "--events"
   - "--triggers"
   - "--routines"
-  - "--single-transaction"
   - "--opt"
 mysqlbackup_mysqldump_needed_db :
   - mysql

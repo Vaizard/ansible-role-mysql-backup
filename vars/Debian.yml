@@ -3,8 +3,8 @@
 # Debian specific vars
 
 mysqlbackup_packages :
-  - percona-xtrabackup
+  - percona-xtrabackup-24
 
-mysqlbackup_percona_key       : "1C4CBDCDCD2EFD2A"
+mysqlbackup_percona_key       : "8507EFA5"
 mysqlbackup_percona_keyserver : "keys.gnupg.net"
 mysqlbackup_percona_repo      : "deb http://repo.percona.com/apt {{ ansible_distribution_release }} main"
