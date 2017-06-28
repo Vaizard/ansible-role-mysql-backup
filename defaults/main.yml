@@ -3,10 +3,10 @@
 # Defaults file for mysql-backup
 
 # Directories
-mysqlbackup_backupdir_dump     : /srv/backup/mysql-dump
-mysqlbackup_backupdir_full     : /srv/backup/mysql-full
-mysqlbackup_backupdir_inc      : /srv/backup/mysql-inc
-mysqlbackup_crontab_script_dir : /root/crontab-scripts
+mysqlbackup_backupdir_dump     : /srv/backups/mysql-dump
+mysqlbackup_backupdir_full     : /srv/backups/mysql-full
+mysqlbackup_backupdir_inc      : /srv/backups/mysql-inc
+mysqlbackup_crontab_script_dir : /opt/mage-mysql-backup
 mysqlbackup_logdir             : /var/log/mysql
 
 mysqlbackup_backupdir_owner      : root
@@ -21,7 +21,7 @@ mysqlbackup_crontab_script_files_owner      : root
 mysqlbackup_crontab_script_files_group      : root
 mysqlbackup_crontab_script_files_permission : "0700"
 
-mysqlbackup_credentials_file : /root/.my_backup.cnf
+mysqlbackup_credentials_file : "{{ mysqlbackup_crontab_script_dir }}/my-backup.cnf"
 
 mysqlbackup_mysqldump_secure_repo : "https://github.com/cytopia/mysqldump-secure.git"
 
@@ -73,4 +73,4 @@ mysqlbackup_mysqldump_delete_method    : tmpwatch
 mysqlbackup_mysqldump_delete_force     : 0
 mysqlbackup_mysqldump_delete_max_hours : 720
 
-mysqlbackup_mysqldump_nagios_active    : 1
+mysqlbackup_mysqldump_nagios_active    : 0
