@@ -30,15 +30,15 @@ mysqlbackup_mysqldump_secure_repo : "https://github.com/cytopia/mysqldump-secure
 mysql_backup_cron_xtrabackup_full_file      : mysql-backup-xtra
 mysql_backup_cron_xtrabackup_full_user      : root
 mysql_backup_cron_xtrabackup_full_minute    : 5
-mysql_backup_cron_xtrabackup_full_hour      : "*"
+mysql_backup_cron_xtrabackup_full_hour      : "*/6"
 mysql_backup_cron_xtrabackup_full_month_day : "*"
 mysql_backup_cron_xtrabackup_full_month     : "*"
 mysql_backup_cron_xtrabackup_full_week_day  : "*"
 
 mysql_backup_cron_mysqldump_file      : mysql-backup-mysqldump
 mysql_backup_cron_mysqldump_user      : root
-mysql_backup_cron_mysqldump_minute    : 50
-mysql_backup_cron_mysqldump_hour      : "*"
+mysql_backup_cron_mysqldump_minute    : 14
+mysql_backup_cron_mysqldump_hour      : "4"
 mysql_backup_cron_mysqldump_month_day : "*"
 mysql_backup_cron_mysqldump_month     : "*"
 mysql_backup_cron_mysqldump_week_day  : "*"
