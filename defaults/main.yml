@@ -25,6 +25,10 @@ mysqlbackup_credentials_file : "/root/.my.cnf"
 
 mysqlbackup_mysqldump_secure_repo : "https://github.com/cytopia/mysqldump-secure.git"
 
+# Backup pruner (prune period in days, disabled by default to prevent unexpected behavior)
+mysqlbackup_prune_enabled : false
+mysqlbackup_prune_period  : 30
+
 
 # Crontab configuration
 mysql_backup_cron_xtrabackup_full_file      : mysql-backup-xtra
@@ -42,7 +46,6 @@ mysql_backup_cron_mysqldump_hour      : "4"
 mysql_backup_cron_mysqldump_month_day : "*"
 mysql_backup_cron_mysqldump_month     : "*"
 mysql_backup_cron_mysqldump_week_day  : "*"
-
 
 # Settings for mysqldump backup
 mysqlbackup_mysqldump_prefix           : "$(date '+%Y-%m-%d')_$(date '+%H-%M')__"

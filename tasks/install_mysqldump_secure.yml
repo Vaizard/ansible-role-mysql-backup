@@ -11,14 +11,14 @@
     mode  : "{{ mysqlbackup_backupdir_permission }}"
 
 
-- name : clone ehanced backup script using mysqldump
-  sudo : false
-  local_action : git repo="{{ mysqlbackup_mysqldump_secure_repo }}" dest="/tmp/ansible-mysqldump-script/" recursive=False
+- name : clone enhanced backup script using mysqldump
+  become : false
+  local_action : git repo="{{ mysqlbackup_mysqldump_secure_repo }}" dest="~/.ansible/tmp/ansible-mysqldump-script/" recursive="no"
 
 
 - name : copy mysqldump backup script
   copy :
-    src   : "/tmp/ansible-mysqldump-script/bin/mysqldump-secure"
+    src   : "~/.ansible/tmp/ansible-mysqldump-script/bin/mysqldump-secure"
     dest  : "{{ mysqlbackup_crontab_script_dir }}/"
     group : "{{ mysqlbackup_crontab_script_files_group }}"
     owner : "{{ mysqlbackup_crontab_script_files_owner }}"
