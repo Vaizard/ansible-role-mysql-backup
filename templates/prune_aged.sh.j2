@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# {{ ansible_managed }}
+
+prune_days="{{ mysqlbackup_prune_days }}"
+prune_enabled="{{ mysqlbackup_prune_enabled }}"
+log_dir="{{ mysqlbackup_logdir }}"
+log_filename="${log_dir}/prune-aged.log"
+prune_date=`date '+%Y-%m-%d %H:%M:%S'`
+
+if [ "${prune_enabled}" = "True" ]; then
+  pushd "{{ mysqlbackup_backupdir_inc }}"
+  echo ">>> Start ${prune_date} prune of {{ mysqlbackup_backupdir_inc }}" >> "${log_filename}"
+  if [ "${prune_enabled}" = "True" ]; then  echo "enabled" >> "${log_filename}"; fi
+  if [ "`find -maxdepth 1 -mtime ${prune_days}`" != "" ]; then
+    echo `find -maxdepth 1 -mtime "+${prune_days}"` >> "${log_filename}";
+    find -maxdepth 1 -mtime "+${prune_days}" -exec rm {} \;
+  fi
+  echo "<<< End ${prune_date} prune of {{ mysqlbackup_backupdir_inc }}" >> "${log_filename}"
+  popd
+fi

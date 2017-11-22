@@ -1,0 +1,24 @@
+---
+
+# Install prune_aged.sh
+
+- name : Generate mage_prune_aged_mysql.sh
+  template :
+    src   : "{{ role_path }}/templates/prune_aged.sh.j2"
+    dest  : "/opt/mage_prune_aged_mysql.sh"
+    group : "{{ mysqlbackup_crontab_script_files_group }}"
+    owner : "{{ mysqlbackup_crontab_script_files_owner }}"
+    mode  : 0500
+
+- name : Create cron entry for mysql prune_aged job
+  cron :
+    cron_file : "{{ mysql_backup_cron_mysqldump_file }}"
+    name      : "mysql_prune_aged"
+    job       : "{{ mysqlbackup_crontab_script_dir }}/mysqldump-secure"
+    user      : "{{ mysql_backup_cron_mysqldump_user }}"
+    minute    : "{{ mysql_backup_cron_mysqldump_minute }}"
+    hour      : "{{ mysql_backup_cron_mysqldump_hour }}"
+    day       : "{{ mysql_backup_cron_mysqldump_month_day }}"
+    month     : "{{ mysql_backup_cron_mysqldump_month }}"
+    weekday   : "{{ mysql_backup_cron_mysqldump_week_day }}"
+    state     : present

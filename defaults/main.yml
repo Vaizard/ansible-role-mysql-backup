@@ -27,7 +27,7 @@ mysqlbackup_mysqldump_secure_repo : "https://github.com/cytopia/mysqldump-secure
 
 # Backup pruner (prune period in days, disabled by default to prevent unexpected behavior)
 mysqlbackup_prune_enabled : false
-mysqlbackup_prune_period  : 30
+mysqlbackup_prune_days    : 30
 
 
 # Crontab configuration
